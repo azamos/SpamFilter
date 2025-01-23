@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class MainTrain {
@@ -19,10 +18,14 @@ public class MainTrain {
             randomlyChosen.add(sfsaf);
             removeSelected.remove(index);
         }
-        System.out.println("removeSelected size is " + removeSelected.size());
-        for (String string : randomlyChosen) {
-            System.out.println(string + " was randomly chosen!");
-        }
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("Starting Part A");
+        // System.out.println("removeSelected size is " + removeSelected.size());
+        // for (String string : randomlyChosen) {
+        // System.out.println(string + " was randomly chosen!");
+        // }
         SpamFilter spamFilter = new SpamFilter();
         for (String string : spamAddresses) {
             spamFilter.AddSpam(string);
@@ -38,7 +41,8 @@ public class MainTrain {
         }
         double fpr = count / 500000.0000;
         System.out.println("false positives out of 500,000: " + count);
-        System.out.println("fpr:" + fpr);
-        System.out.println("m = " + spamFilter.m + ", k = " + spamFilter.k);
+        if (fpr < 0.001)
+            System.out.println("fpr = " + fpr + " < " + 0.001 + " ! Part A successful!");
+        // System.out.println("m = " + spamFilter.m + ", k = " + spamFilter.k);
     }
 }

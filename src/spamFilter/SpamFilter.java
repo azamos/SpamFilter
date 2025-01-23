@@ -2,7 +2,6 @@
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.BitSet;
-import java.util.Random;
 import java.util.function.Function;
 
 public class SpamFilter {
