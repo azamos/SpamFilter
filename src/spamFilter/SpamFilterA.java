@@ -1,4 +1,6 @@
 
+//amos zohar - 311402812 
+//shelly srour - 316384254
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ public class SpamFilterA {
     private static final double ln2 = Math.log(2);
     public static int m = (int) Math.ceil(1.2500 * (-MAX_SPAM_ADDRESS_COUNT / (ln2 * ln2)) * Math.log(ERROR_THRESHOLD));
     public static int k = (int) Math.ceil(ln2 * m / MAX_SPAM_ADDRESS_COUNT);
-    private static final int nearestPrimeToM = 2161;// bigger: 2179
+    // private static final int nearestPrimeToM = 2161;// bigger: 2179
     private MessageDigest MD5;
     private MessageDigest SHA256;
     private Function<String, Integer> h1;
