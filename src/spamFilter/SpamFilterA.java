@@ -1,9 +1,6 @@
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.BitSet;
-import java.util.Random;
 import java.util.function.Function;
 
 public class SpamFilterA {
@@ -11,9 +8,8 @@ public class SpamFilterA {
     private static final int MAX_SPAM_ADDRESS_COUNT = 100;// n
     private static final double ERROR_THRESHOLD = 0.001;
     private static final double ln2 = Math.log(2);
-    public static int m = (int) Math.ceil(2 * (-MAX_SPAM_ADDRESS_COUNT / (ln2 * ln2)) * Math.log(ERROR_THRESHOLD));
+    public static int m = (int) Math.ceil(3 * (-MAX_SPAM_ADDRESS_COUNT / (ln2 * ln2)) * Math.log(ERROR_THRESHOLD));
     public static int k = (int) Math.ceil(ln2 * m / MAX_SPAM_ADDRESS_COUNT);
-    // private static final int nearestPrimeToM = 2161;// bigger: 2179
     private MessageDigest MD5;
     private MessageDigest SHA256;
     private Function<String, Integer> h1;

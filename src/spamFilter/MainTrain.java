@@ -42,7 +42,7 @@ public class MainTrain {
             if (spamFilter.IsSpam(validAddress))
                 count++;
         }
-        double fpr = count / NON_SPAM_COUNT;
+        double fpr = (double) count / NON_SPAM_COUNT;
         System.out.println("false positives out of 500,000: " + count);
         if (fpr <= 0.001 && partAsuccess)
             System.out.print("-----------PART A FINISHED SUCCESSFULLY -----------");
@@ -81,7 +81,7 @@ public class MainTrain {
             if (spamFilter.IsSpam(validAddress))
                 count2++;
         }
-        double fpr2 = count2 / NON_SPAM_COUNT;
+        double fpr2 = (double) count2 / NON_SPAM_COUNT;
         System.out.println("FOR PART2: false positives out of 500,000: " + count2);
         if (fpr2 <= 0.001 && partBsuccess)
             System.out.print("-----------PART B FINISHED SUCCESSFULLY -----------");
@@ -154,7 +154,7 @@ public class MainTrain {
         }
         System.out.println("false positive count for REMAINING 400000: " + count3Dot1);
         count3 += count3Dot1;
-        double fpr3 = count3 / NON_SPAM_COUNT;
+        double fpr3 = (double) count3 / NON_SPAM_COUNT;
         System.out.println("false positives out of 500,000: " + count3);
         if (fpr3 <= 0.001 && partCsuccess)
             System.out.print("-----------PART C FINISHED SUCCESSFULLY -----------");

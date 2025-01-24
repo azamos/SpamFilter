@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
 public class SpamFilterB extends SpamFilterA {
     StringSkipList skipList = new StringSkipList(0.5);
