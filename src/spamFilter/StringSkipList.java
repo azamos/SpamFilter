@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class StringSkipList {
+    private int count_searches = 0;
 
     private class StringNode {
         String key;
@@ -21,8 +22,13 @@ public class StringSkipList {
         this.P = P;
     }
 
+    public int getSearchCount() {
+        return count_searches;
+    }
+
     public StringNode search(String key) {
         /* Start search at the shortest(Top Level) linked list */
+        count_searches++;
         int i = depth - 1;
         while (i >= 0) {
             StringNode curr = overList.get(i);
