@@ -6,7 +6,7 @@ public class AddressesGenerator {
     private static final String[] domains = { "gmail.com", "hotmail.com", "outlook.com", "yahoo.com" };
     private static final String[] names = { "amos", "BAR", "jaKE", "TRUFFLES", "SpOngEboB" };
 
-    public static String[] GENERATE_EMAILS(int addressesAmount) {
+    public static ArrayList<String> GENERATE_EMAILS(int addressesAmount) {
         ArrayList<String> emails = new ArrayList<>(addressesAmount);
         Random r = new Random();
         for (int i = 0; i < addressesAmount; i++) {
@@ -15,6 +15,6 @@ public class AddressesGenerator {
             String domain = domains[r.nextInt(domains.length)];
             emails.add(initial + num + "@" + domain);
         }
-        return emails.toArray(new String[0]);
+        return emails;
     }
 }
