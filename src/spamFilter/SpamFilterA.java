@@ -1,6 +1,3 @@
-
-//amos zohar - 311402812 
-//shelly srour - 316384254
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -21,8 +18,8 @@ public class SpamFilterA {
     private MessageDigest SHA256;
     private Function<String, Integer> h1;
     private Function<String, Integer> h2;
-    private Function<String, Integer>[] hashFunctions = new Function[k];
-    private BitSet indicator = new BitSet(m);
+    Function<String, Integer>[] hashFunctions = new Function[k];
+    BitSet indicator = new BitSet(m);
 
     public static final int SAMPLE_SIZE = 10;
 
@@ -80,56 +77,5 @@ public class SpamFilterA {
                 return false;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        System.out.println();
-        System.out.println();
-        System.out.println("Starting Part A");
-        int EXP_COUNT = 2000;
-        int sum = 0;
-        for (int i = 0; i < EXP_COUNT; i++) {
-            sum += runExperiment();
-        }
-        System.out.println("Out of " + EXP_COUNT + " experminets run, " + sum + " were succesfull");
-    }
-
-    public static int runExperiment() {
-
-        String[] spamAddresses = AddressesGenerator.GENERATE_EMAILS();
-        ArrayList<String> removeSelected = new ArrayList<>(Arrays.asList(spamAddresses));
-        ArrayList<String> randomlyChosen = new ArrayList<>();
-        SpamFilterA myFilter = new SpamFilterA();
-        Random r = new Random();
-        for (int i = 0; i < SAMPLE_SIZE; i++) {
-            int index = r.nextInt(removeSelected.size());
-            String sfsaf = removeSelected.get(index);
-            randomlyChosen.add(sfsaf);
-            removeSelected.remove(index);
-        }
-        // System.out.println("removeSelected size is " + removeSelected.size());
-        // for (String string : randomlyChosen) {
-        // System.out.println(string + " was randomly chosen!");
-        // }
-        SpamFilterA spamFilter = new SpamFilterA();
-        for (String string : spamAddresses) {
-            spamFilter.AddSpam(string);
-        }
-        for (String string : randomlyChosen) {
-            if (!spamFilter.IsSpam(string))
-                System.out.println("ERROR: " + string + " incorrectly NOT identified as spam!");
-        }
-        int count = 0;
-        for (int i = 1; i < 500001; i++) {
-            if (spamFilter.IsSpam(("valid#" + r.nextDouble() + "@valid.com")))
-                count++;
-        }
-        double fpr = count / 500000.0000;
-        // System.out.println("false positives out of 500,000: " + count);
-        if (fpr < 0.001)
-            return 1;
-        // System.out.println("fpr = " + fpr + " < " + 0.001 + " ! Part A successful!");
-        // System.out.println("m = " + spamFilter.m + ", k = " + spamFilter.k);
-        return 0;
     }
 }

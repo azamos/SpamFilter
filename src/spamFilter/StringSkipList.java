@@ -13,20 +13,18 @@ public class StringSkipList {
         }
     }
 
-    private ArrayList<StringNode> overList = new ArrayList<>(); // Skip list levels
-    private double P; // Probability of promotion
-    private int depth = 0; // Number of levels in the skip list
+    private ArrayList<StringNode> overList = new ArrayList<>();
+    private double P;
+    private int depth = 0;
 
     public StringSkipList(double P) {
         this.P = P;
     }
 
-    // Getter for search count
     public int getSearchCount() {
         return count_searches;
     }
 
-    // Search for a key in the skip list
     public StringNode search(String key) {
         count_searches++;
         int i = depth - 1; // Start from the topmost level
@@ -36,14 +34,13 @@ public class StringSkipList {
                 curr = curr.next;
             }
             if (curr != null && curr.key.equals(key)) {
-                return curr; // Key found
+                return curr;
             }
-            i--; // Drop to the next lower level
+            i--;
         }
-        return null; // Key not found
+        return null;
     }
 
-    // Add a new key to the skip list
     public void add(String key) {
         Random r = new Random();
         boolean promote = true;
@@ -68,7 +65,6 @@ public class StringSkipList {
                     newNode.next = overList.get(level);
                     overList.set(level, newNode);
                 } else {
-                    // Insert between prev and curr
                     prev.next = newNode;
                     newNode.next = curr;
                 }
@@ -79,10 +75,9 @@ public class StringSkipList {
                 depth++;
             }
 
-            // Prepare for promotion
-            promotedNode = newNode; // Copy the reference
-            newNode = new StringNode(key); // Create a new node for the higher level
-            promote = r.nextDouble() < P; // Flip a coin
+            promotedNode = newNode;
+            newNode = new StringNode(key);
+            promote = r.nextDouble() < P;
             level++;
         }
     }
